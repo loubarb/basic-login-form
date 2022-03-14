@@ -9,6 +9,8 @@ export default function App() {
     email: '',
   });
 
+  const [submitted, setSubmitted] = useState(false);
+
   const handleFirstNameInputChange = (e) => {
     e.persist();
     setValues((values) => ({
@@ -33,12 +35,17 @@ export default function App() {
     }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+  }
+
 
   return (
     <div class="form-container">
-      <form class="register-form">
+      <form class="register-form" onSubmit={handleSubmit}>
         {/* Uncomment the next line to show the success message */}
-        {/* <div class="success-message">Success! Thank you for registering</div> */}
+        {submitted ? <div class="success-message">Success! Thank you for registering</div> : null}
         <input
           id="first-name"
           class="form-field"
