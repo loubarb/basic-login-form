@@ -3,11 +3,36 @@ import "./index.css";
 import { useState } from "react";
 
 export default function App() {
-const [values, setValue] = useState({
-  firstName: '',
-  lastName: '',
-  email: '',
-});
+  const [values, setValues] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+  });
+
+  const handleFirstNameInputChange = (e) => {
+    e.persist();
+    setValues((values) => ({
+      ...values,
+      firstName: e.target.value,
+    }));
+  };
+
+  const handleLastNameInputChange = (e) => {
+    e.persist();
+    setValues((values) => ({
+      ...values,
+      lastName: e.target.value,
+    }));
+  };
+
+  const handleEmailInputChange = (e) => {
+    e.persist();
+    setValues((values) => ({
+      ...values,
+      email: e.target.value,
+    }));
+  };
+
 
   return (
     <div class="form-container">
@@ -21,6 +46,7 @@ const [values, setValue] = useState({
           placeholder="First Name"
           name="firstName"
           value={values.firstName}
+          onChange={handleFirstNameInputChange}
         />
         {/* Uncomment the next line to show the error message */}
         {/* <span id="first-name-error">Please enter a first name</span> */}
@@ -31,6 +57,7 @@ const [values, setValue] = useState({
           placeholder="Last Name"
           name="lastName"
           value={values.lastName}
+          onChange={handleLastNameInputChange}
         />
         {/* Uncomment the next line to show the error message */}
         {/* <span id="last-name-error">Please enter a last name</span> */}
@@ -41,6 +68,7 @@ const [values, setValue] = useState({
           placeholder="Email"
           name="email"
           value={values.email}
+          onChange={handleEmailInputChange}
         />
         {/* Uncomment the next line to show the error message */}
         {/* <span id="email-error">Please enter an email address</span> */}
