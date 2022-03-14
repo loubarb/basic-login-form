@@ -1,7 +1,14 @@
 import React from "react";
 import "./index.css";
+import { useState } from "react";
 
 export default function App() {
+const [values, setValue] = useState({
+  firstName: '',
+  lastName: '',
+  email: '',
+});
+
   return (
     <div class="form-container">
       <form class="register-form">
@@ -13,6 +20,7 @@ export default function App() {
           type="text"
           placeholder="First Name"
           name="firstName"
+          value={values.firstName}
         />
         {/* Uncomment the next line to show the error message */}
         {/* <span id="first-name-error">Please enter a first name</span> */}
@@ -22,6 +30,7 @@ export default function App() {
           type="text"
           placeholder="Last Name"
           name="lastName"
+          value={values.lastName}
         />
         {/* Uncomment the next line to show the error message */}
         {/* <span id="last-name-error">Please enter a last name</span> */}
@@ -31,6 +40,7 @@ export default function App() {
           type="text"
           placeholder="Email"
           name="email"
+          value={values.email}
         />
         {/* Uncomment the next line to show the error message */}
         {/* <span id="email-error">Please enter an email address</span> */}
